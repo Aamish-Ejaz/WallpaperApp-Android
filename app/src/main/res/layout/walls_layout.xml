@@ -68,6 +68,7 @@
                 android:contentDescription="@string/image_card"
                 android:focusable="true"
                 android:padding="10dp"
+                android:visibility="gone"
                 android:src="@drawable/ic_crown_24"
                 tools:ignore="RtlHardcoded" />
 

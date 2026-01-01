@@ -92,8 +92,9 @@ public class WallsAdapter extends RecyclerView.Adapter<WallsAdapter.ViewHolder> 
             return;
         }
 
-        holder.premiumImage.setVisibility(pojo.isPremium() ? View.VISIBLE : View.GONE);
-        holder.heartImage.setVisibility(pojo.isPremium() ? View.GONE : View.VISIBLE);
+//        holder.premiumImage.setVisibility(pojo.isPremium() ? View.VISIBLE : View.GONE);
+//        holder.heartImage.setVisibility(pojo.isPremium() ? View.GONE : View.VISIBLE);
+        holder.heartImage.setVisibility(View.VISIBLE);
         Glide.with(context).load(pojo.getPreviewUrl()).diskCacheStrategy(DiskCacheStrategy.DATA).transition(DrawableTransitionOptions.withCrossFade()).into(holder.imageView);
         holder.title.setText(pojo.getName());
         holder.card.setOnClickListener(view -> {
