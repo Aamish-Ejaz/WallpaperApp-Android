@@ -123,12 +123,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        menu.findItem(R.id.action_policy).setOnMenuItemClickListener(menuItem -> {
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(getString(R.string.privicy_policy)));
-            startActivity(i);
-            return true;
-        });
+//        menu.findItem(R.id.action_policy).setOnMenuItemClickListener(menuItem -> {
+//            Intent i = new Intent(Intent.ACTION_VIEW);
+//            i.setData(Uri.parse(getString(R.string.privicy_policy)));
+//            startActivity(i);
+//            return true;
+//        });
 
         if (currentFragPos == 2) {
             return super.onCreateOptionsMenu(menu);

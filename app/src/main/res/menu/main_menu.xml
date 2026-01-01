@@ -13,8 +13,8 @@
         android:title="@string/settings"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_policy"
-        android:title="@string/policy"
-        app:showAsAction="never" />
+<!--    <item-->
+<!--        android:id="@+id/action_policy"-->
+<!--        android:title="@string/policy"-->
+<!--        app:showAsAction="never" />-->
 </menu>
