@@ -13,7 +13,7 @@ android {
     compileSdk 36
 
     defaultConfig {
-        applicationId "com.shubhamgupta16.simplewallpaper"
+        applicationId "com.sbiks.wallpapertopnature"
         targetSdk 36
         minSdk 23
         versionCode 1
@@ -45,7 +45,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    namespace 'com.shubhamgupta16.simplewallpaper'
+    namespace 'com.sbiks.wallpapertopnature'
 }
 
 dependencies {
