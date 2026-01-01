@@ -17,19 +17,19 @@
         app:title="Category"/>
     <fragment
         android:layout_below="@id/toolbar"
-        android:layout_above="@id/adView"
+        android:layout_alignParentBottom="true"
         android:id="@+id/moreFragment"
         android:name="com.sbiks.wallpapertopnature.fragments.WallsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_reycler" />
 
-    <com.google.android.gms.ads.AdView
-        android:layout_alignParentBottom="true"
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/more_banner_id"/>
+<!--    <com.google.android.gms.ads.AdView-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--        android:id="@+id/adView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        ads:adSize="BANNER"-->
+<!--        ads:adUnitId="@string/more_banner_id"/>-->
 </RelativeLayout>

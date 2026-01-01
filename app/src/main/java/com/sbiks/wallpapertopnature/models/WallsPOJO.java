@@ -1,6 +1,6 @@
 package com.sbiks.wallpapertopnature.models;
 
-import com.google.android.gms.ads.nativead.NativeAd;
+// import com.google.android.gms.ads.nativead.NativeAd; // Commented
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ public class WallsPOJO implements Serializable {
     private final int viewType;
     private final String name, previewUrl, url, categories;
     private final boolean premium;
-    private NativeAd nativeAd;
+    // private NativeAd nativeAd; // Commented
 
     public WallsPOJO(String url, String name, String previewUrl, String categories, boolean premium) {
         this.viewType = 0;
@@ -17,10 +17,11 @@ public class WallsPOJO implements Serializable {
         this.url = url;
         this.categories = categories;
         this.premium = premium;
-        nativeAd = null;
+        // this.nativeAd = null; // Commented
     }
 
-    public WallsPOJO(NativeAd nativeAd){
+    // NativeAd constructor ko comment kar diya gaya hai
+    /* public WallsPOJO(NativeAd nativeAd){
         viewType = -2;
         this.name = null;
         this.previewUrl = null;
@@ -29,6 +30,8 @@ public class WallsPOJO implements Serializable {
         this.premium = false;
         this.nativeAd = nativeAd;
     }
+    */
+
     public WallsPOJO(boolean fullSize){
         viewType = fullSize ? -3 : -1;
         this.name = null;
@@ -36,12 +39,13 @@ public class WallsPOJO implements Serializable {
         this.url = null;
         this.categories = null;
         this.premium = false;
-        this.nativeAd = null;
+        // this.nativeAd = null; // Commented
     }
 
-    public NativeAd getNativeAd() {
+    /* public NativeAd getNativeAd() {
         return nativeAd;
     }
+    */
 
     public int getViewType() {
         return viewType;
@@ -67,7 +71,8 @@ public class WallsPOJO implements Serializable {
         return categories;
     }
 
-    public void setNativeAd(NativeAd nativeAd) {
+    /* public void setNativeAd(NativeAd nativeAd) {
         this.nativeAd = nativeAd;
     }
+    */
 }

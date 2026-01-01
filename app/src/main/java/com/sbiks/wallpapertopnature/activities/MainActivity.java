@@ -15,9 +15,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.AdView;
+//import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sbiks.wallpapertopnature.R;
 import com.sbiks.wallpapertopnature.data_source.DataService;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private WallsFragment favoriteFragment;
     private int currentFragPos = 0;
     private MenuItem searchItem;
-    private AdView adView;
+//    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +42,18 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        initAd();
+//        initAd();
         init();
     }
 
-    private void initAd() {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-
-        adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-    }
+//    private void initAd() {
+//        MobileAds.initialize(this, initializationStatus -> {
+//        });
+//
+//        adView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        adView.loadAd(adRequest);
+//    }
 
     @Override
     protected void onStart() {
@@ -68,19 +68,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        adView.pause();
+//        adView.pause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        adView.resume();
+//        adView.resume();
     }
 
     @Override
     protected void onDestroy() {
-        adView.destroy();
+//        adView.destroy();
         super.onDestroy();
     }
 

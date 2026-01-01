@@ -18,12 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.nativead.NativeAd;
-import com.google.android.gms.ads.nativead.NativeAdOptions;
+//import com.google.android.gms.ads.AdListener;
+//import com.google.android.gms.ads.AdLoader;
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.LoadAdError;
+//import com.google.android.gms.ads.nativead.NativeAd;
+//import com.google.android.gms.ads.nativead.NativeAdOptions;
 import com.sbiks.wallpapertopnature.MainApplication;
 import com.sbiks.wallpapertopnature.R;
 import com.sbiks.wallpapertopnature.data_source.DataService;
@@ -42,8 +42,8 @@ public class WallsFragment extends Fragment {
 
     private View view;
     private ArrayList<WallsPOJO> list;
-    private ArrayList<Integer> adPositionList;
-    private ArrayList<NativeAd> nativeAdList;
+//    private ArrayList<Integer> adPositionList;
+//    private ArrayList<NativeAd> nativeAdList;
     private WallsAdapter adapter;
     private DataService dataService;
     private boolean isScrollLoad = false;
@@ -66,8 +66,8 @@ public class WallsFragment extends Fragment {
         Log.d("tagtag", "init");
         dataService = MainApplication.getDataService(requireActivity().getApplication());
         list = new ArrayList<>();
-        adPositionList = new ArrayList<>();
-        nativeAdList = new ArrayList<>();
+//        adPositionList = new ArrayList<>();
+//        nativeAdList = new ArrayList<>();
         errorLayout = view.findViewById(R.id.errorLayout);
         progressBar = view.findViewById(R.id.progressBar);
         RecyclerView wallsRecycler = view.findViewById(R.id.recyclerView);
@@ -106,39 +106,39 @@ public class WallsFragment extends Fragment {
         });
     }
 
-    private void loadNativeAds() {
-        AdLoader adLoader = new AdLoader.Builder(requireContext(), getString(R.string.native_ad_id))
-                .forNativeAd(nativeAd -> {
-                    if (isDetached() || getActivity() == null) {
-                        nativeAd.destroy();
-                        return;
-                    }
-                    Log.d(TAG, "loadNativeAds: called");
-                    nativeAdList.add(nativeAd);
-                    if (!adPositionList.isEmpty()) {
-                        Log.d(TAG, "apl: " + adPositionList);
-                        for (int i = 0; i < adPositionList.size(); i++) {
-                            int pos = adPositionList.get(i);
-                            int adPos = i % nativeAdList.size();
-                            list.set(pos, new WallsPOJO(nativeAdList.get(adPos)));
-                            adapter.notifyItemChanged(pos);
-                        }
-                    }
-                })
-                .withAdListener(new AdListener() {
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError adError) {
-//                            holder.adView.setVisibility(View.GONE);
-                        // Handle the failure by logging, altering the UI, and so on.
-                    }
-                })
-                .withNativeAdOptions(new NativeAdOptions.Builder()
-                        // Methods in the NativeAdOptions.Builder class can be
-                        // used here to specify individual options settings.
-                        .build())
-                .build();
-        adLoader.loadAds(new AdRequest.Builder().build(), 2);
-    }
+//    private void loadNativeAds() {
+//        AdLoader adLoader = new AdLoader.Builder(requireContext(), getString(R.string.native_ad_id))
+//                .forNativeAd(nativeAd -> {
+//                    if (isDetached() || getActivity() == null) {
+//                        nativeAd.destroy();
+//                        return;
+//                    }
+//                    Log.d(TAG, "loadNativeAds: called");
+//                    nativeAdList.add(nativeAd);
+//                    if (!adPositionList.isEmpty()) {
+//                        Log.d(TAG, "apl: " + adPositionList);
+//                        for (int i = 0; i < adPositionList.size(); i++) {
+//                            int pos = adPositionList.get(i);
+//                            int adPos = i % nativeAdList.size();
+//                            list.set(pos, new WallsPOJO(nativeAdList.get(adPos)));
+//                            adapter.notifyItemChanged(pos);
+//                        }
+//                    }
+//                })
+//                .withAdListener(new AdListener() {
+//                    @Override
+//                    public void onAdFailedToLoad(@NonNull LoadAdError adError) {
+////                            holder.adView.setVisibility(View.GONE);
+//                        // Handle the failure by logging, altering the UI, and so on.
+//                    }
+//                })
+//                .withNativeAdOptions(new NativeAdOptions.Builder()
+//                        // Methods in the NativeAdOptions.Builder class can be
+//                        // used here to specify individual options settings.
+//                        .build())
+//                .build();
+//        adLoader.loadAds(new AdRequest.Builder().build(), 2);
+//    }
 
     private DataService.QueryType type = DataService.QueryType.NONE;
     private String extras;
@@ -158,8 +158,8 @@ public class WallsFragment extends Fragment {
         errorLayout.setVisibility(View.GONE);
         setErrorLayout();
         fetchWalls(1);
-        if (!atEnd && nativeAdList.isEmpty())
-            loadNativeAds();
+//        if (!atEnd && nativeAdList.isEmpty())
+//            loadNativeAds();
     }
 
     private void setErrorLayout() {
@@ -224,14 +224,14 @@ public class WallsFragment extends Fragment {
         if (walls.size() > 2) {
             list.addAll(walls.subList(0, 2));
             if (page > 1 && !atEnd && !list.isEmpty()) {
-                adPositionList.add(list.size());
+//                adPositionList.add(list.size());
 
-                if (nativeAdList.isEmpty()) {
-                    list.add(new WallsPOJO(null));
-                } else {
-                    int adPos = (adPositionList.size() - 1) % nativeAdList.size();
-                    list.add(new WallsPOJO(nativeAdList.get(adPos)));
-                }
+//                if (nativeAdList.isEmpty()) {
+//                    list.add(new WallsPOJO(null));
+//                } else {
+//                    int adPos = (adPositionList.size() - 1) % nativeAdList.size();
+//                    list.add(new WallsPOJO(nativeAdList.get(adPos)));
+//                }
             }
             list.addAll(walls.subList(2, walls.size()));
         } else {
@@ -257,7 +257,7 @@ public class WallsFragment extends Fragment {
     public void focus() {
         Log.d("tagtag", "focus, " + list.size() + " " + type);
         if (type == DataService.QueryType.FAVORITE) {
-            adPositionList.clear();
+//            adPositionList.clear();
             list.clear();
             adapter.notifyDataSetChanged();
             fetchWalls(1);

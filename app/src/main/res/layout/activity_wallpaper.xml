@@ -61,8 +61,8 @@
         android:id="@+id/bottomButtonNav"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_above="@id/adView"
-        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         android:baselineAligned="false">
 
         <LinearLayout
@@ -140,14 +140,14 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:minHeight="50dp"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/set_wallpaper_banner_id" />
+<!--    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--        android:id="@+id/adView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:minHeight="50dp"-->
+<!--        ads:adSize="BANNER"-->
+<!--        ads:adUnitId="@string/set_wallpaper_banner_id" />-->
 
     <ProgressBar
         android:id="@+id/full_progressbar"

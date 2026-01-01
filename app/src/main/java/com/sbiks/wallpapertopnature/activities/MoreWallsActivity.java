@@ -7,9 +7,9 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.AdView;
+//import com.google.android.gms.ads.MobileAds;
 import com.sbiks.wallpapertopnature.R;
 import com.sbiks.wallpapertopnature.data_source.DataService;
 import com.sbiks.wallpapertopnature.fragments.WallsFragment;
@@ -17,7 +17,7 @@ import com.sbiks.wallpapertopnature.fragments.WallsFragment;
 public class MoreWallsActivity extends AppCompatActivity {
 
     private WallsFragment wallsFragment;
-    private AdView adView;
+//    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class MoreWallsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(view -> finish());
 
-        initAd();
+//        initAd();
 
         Intent intent = getIntent();
         FragmentManager manager = getSupportFragmentManager();
@@ -43,14 +43,14 @@ public class MoreWallsActivity extends AppCompatActivity {
 
     }
 
-    private void initAd() {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-
-        adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-    }
+//    private void initAd() {
+//        MobileAds.initialize(this, initializationStatus -> {
+//        });
+//
+//        adView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        adView.loadAd(adRequest);
+//    }
 
     @Override
     protected void onStart() {
@@ -60,19 +60,19 @@ public class MoreWallsActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        adView.pause();
+//        adView.pause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        adView.resume();
+//        adView.resume();
     }
 
     @Override
     protected void onDestroy() {
-        adView.destroy();
+//        adView.destroy();
         super.onDestroy();
     }
 }

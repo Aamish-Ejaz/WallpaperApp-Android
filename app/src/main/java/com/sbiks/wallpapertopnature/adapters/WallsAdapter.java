@@ -17,9 +17,9 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.google.android.gms.ads.nativead.MediaView;
-import com.google.android.gms.ads.nativead.NativeAd;
-import com.google.android.gms.ads.nativead.NativeAdView;
+//import com.google.android.gms.ads.nativead.MediaView;
+//import com.google.android.gms.ads.nativead.NativeAd;
+//import com.google.android.gms.ads.nativead.NativeAdView;
 import com.sbiks.wallpapertopnature.R;
 import com.sbiks.wallpapertopnature.data_source.DataService;
 import com.sbiks.wallpapertopnature.activities.WallpaperActivity;
@@ -83,12 +83,12 @@ public class WallsAdapter extends RecyclerView.Adapter<WallsAdapter.ViewHolder> 
             StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) holder.itemView.getLayoutParams();
             layoutParams.setFullSpan(true);
 
-            NativeAd ad = pojo.getNativeAd();
-            if (ad != null) {
-                NativeAdView unifiedNativeAdView = holder.adView;
-                unifiedNativeAdView.setVisibility(View.VISIBLE);
-                mapUnifiedNativeAdToLayout(pojo.getNativeAd(), unifiedNativeAdView);
-            }
+//            NativeAd ad = pojo.getNativeAd();
+//            if (ad != null) {
+//                NativeAdView unifiedNativeAdView = holder.adView;
+//                unifiedNativeAdView.setVisibility(View.VISIBLE);
+//                mapUnifiedNativeAdToLayout(pojo.getNativeAd(), unifiedNativeAdView);
+//            }
             return;
         }
 
@@ -143,7 +143,7 @@ public class WallsAdapter extends RecyclerView.Adapter<WallsAdapter.ViewHolder> 
         private ImageView imageView, heartImage, premiumImage;
         private TextView title;
         private View card;
-        private NativeAdView adView;
+//        private NativeAdView adView;
 
         public ViewHolder(@NonNull View itemView, int viewType) {
             super(itemView);
@@ -154,7 +154,7 @@ public class WallsAdapter extends RecyclerView.Adapter<WallsAdapter.ViewHolder> 
                 title = itemView.findViewById(R.id.title);
                 card = itemView.findViewById(R.id.card);
             } else if (viewType == 2) {
-                adView = itemView.findViewById(R.id.unifiedNativeAd);
+//                adView = itemView.findViewById(R.id.unifiedNativeAd);
             }
         }
     }
@@ -168,77 +168,77 @@ public class WallsAdapter extends RecyclerView.Adapter<WallsAdapter.ViewHolder> 
         void onRemove();
     }
 
-    public void mapUnifiedNativeAdToLayout(NativeAd adFromGoogle, NativeAdView myAdView) {
-        MediaView mediaView = myAdView.findViewById(R.id.ad_media);
-        myAdView.setMediaView(mediaView);
-
-        myAdView.setHeadlineView(myAdView.findViewById(R.id.ad_headline));
-        myAdView.setBodyView(myAdView.findViewById(R.id.ad_body));
-        myAdView.setCallToActionView(myAdView.findViewById(R.id.ad_call_to_action));
-        myAdView.setIconView(myAdView.findViewById(R.id.ad_icon));
-        myAdView.setPriceView(myAdView.findViewById(R.id.ad_price));
-        myAdView.setStarRatingView(myAdView.findViewById(R.id.ad_rating));
-        myAdView.setStoreView(myAdView.findViewById(R.id.ad_store));
-        myAdView.setAdvertiserView(myAdView.findViewById(R.id.ad_advertiser));
-
-        ((TextView) Objects.requireNonNull(myAdView.getHeadlineView())).setText(adFromGoogle.getHeadline());
-
-        if (myAdView.getBodyView() != null){
-            if (adFromGoogle.getBody() == null) {
-                myAdView.getBodyView().setVisibility(View.GONE);
-            } else {
-                ((TextView) myAdView.getBodyView()).setText(adFromGoogle.getBody());
-            }
-        }
-
-        if (myAdView.getCallToActionView() != null) {
-            if (adFromGoogle.getCallToAction() == null) {
-                myAdView.getCallToActionView().setVisibility(View.GONE);
-            } else {
-                ((Button) myAdView.getCallToActionView()).setText(adFromGoogle.getCallToAction());
-            }
-        }
-
-        if (myAdView.getIconView() != null) {
-            if (adFromGoogle.getIcon() == null) {
-                myAdView.getIconView().setVisibility(View.GONE);
-            } else {
-                ((ImageView) myAdView.getIconView()).setImageDrawable(adFromGoogle.getIcon().getDrawable());
-            }
-        }
-
-        if (myAdView.getPriceView() != null) {
-            if (adFromGoogle.getPrice() == null) {
-                myAdView.getPriceView().setVisibility(View.GONE);
-            } else {
-                ((TextView) myAdView.getPriceView()).setText(adFromGoogle.getPrice());
-            }
-        }
-
-        if (myAdView.getStarRatingView() != null) {
-            if (adFromGoogle.getStarRating() == null) {
-                myAdView.getStarRatingView().setVisibility(View.GONE);
-            } else {
-                ((RatingBar) myAdView.getStarRatingView()).setRating(adFromGoogle.getStarRating().floatValue());
-            }
-        }
-
-        if (myAdView.getStoreView() != null) {
-            if (adFromGoogle.getStore() == null) {
-                myAdView.getStoreView().setVisibility(View.GONE);
-            } else {
-                ((TextView) myAdView.getStoreView()).setText(adFromGoogle.getStore());
-            }
-        }
-
-        if (myAdView.getAdvertiserView() != null) {
-            if (adFromGoogle.getAdvertiser() == null) {
-                myAdView.getAdvertiserView().setVisibility(View.GONE);
-            } else {
-                ((TextView) myAdView.getAdvertiserView()).setText(adFromGoogle.getAdvertiser());
-            }
-        }
-
-        myAdView.setNativeAd(adFromGoogle);
-    }
+//    public void mapUnifiedNativeAdToLayout(NativeAd adFromGoogle, NativeAdView myAdView) {
+//        MediaView mediaView = myAdView.findViewById(R.id.ad_media);
+//        myAdView.setMediaView(mediaView);
+//
+//        myAdView.setHeadlineView(myAdView.findViewById(R.id.ad_headline));
+//        myAdView.setBodyView(myAdView.findViewById(R.id.ad_body));
+//        myAdView.setCallToActionView(myAdView.findViewById(R.id.ad_call_to_action));
+//        myAdView.setIconView(myAdView.findViewById(R.id.ad_icon));
+//        myAdView.setPriceView(myAdView.findViewById(R.id.ad_price));
+//        myAdView.setStarRatingView(myAdView.findViewById(R.id.ad_rating));
+//        myAdView.setStoreView(myAdView.findViewById(R.id.ad_store));
+//        myAdView.setAdvertiserView(myAdView.findViewById(R.id.ad_advertiser));
+//
+//        ((TextView) Objects.requireNonNull(myAdView.getHeadlineView())).setText(adFromGoogle.getHeadline());
+//
+//        if (myAdView.getBodyView() != null){
+//            if (adFromGoogle.getBody() == null) {
+//                myAdView.getBodyView().setVisibility(View.GONE);
+//            } else {
+//                ((TextView) myAdView.getBodyView()).setText(adFromGoogle.getBody());
+//            }
+//        }
+//
+//        if (myAdView.getCallToActionView() != null) {
+//            if (adFromGoogle.getCallToAction() == null) {
+//                myAdView.getCallToActionView().setVisibility(View.GONE);
+//            } else {
+//                ((Button) myAdView.getCallToActionView()).setText(adFromGoogle.getCallToAction());
+//            }
+//        }
+//
+//        if (myAdView.getIconView() != null) {
+//            if (adFromGoogle.getIcon() == null) {
+//                myAdView.getIconView().setVisibility(View.GONE);
+//            } else {
+//                ((ImageView) myAdView.getIconView()).setImageDrawable(adFromGoogle.getIcon().getDrawable());
+//            }
+//        }
+//
+//        if (myAdView.getPriceView() != null) {
+//            if (adFromGoogle.getPrice() == null) {
+//                myAdView.getPriceView().setVisibility(View.GONE);
+//            } else {
+//                ((TextView) myAdView.getPriceView()).setText(adFromGoogle.getPrice());
+//            }
+//        }
+//
+//        if (myAdView.getStarRatingView() != null) {
+//            if (adFromGoogle.getStarRating() == null) {
+//                myAdView.getStarRatingView().setVisibility(View.GONE);
+//            } else {
+//                ((RatingBar) myAdView.getStarRatingView()).setRating(adFromGoogle.getStarRating().floatValue());
+//            }
+//        }
+//
+//        if (myAdView.getStoreView() != null) {
+//            if (adFromGoogle.getStore() == null) {
+//                myAdView.getStoreView().setVisibility(View.GONE);
+//            } else {
+//                ((TextView) myAdView.getStoreView()).setText(adFromGoogle.getStore());
+//            }
+//        }
+//
+//        if (myAdView.getAdvertiserView() != null) {
+//            if (adFromGoogle.getAdvertiser() == null) {
+//                myAdView.getAdvertiserView().setVisibility(View.GONE);
+//            } else {
+//                ((TextView) myAdView.getAdvertiserView()).setText(adFromGoogle.getAdvertiser());
+//            }
+//        }
+//
+//        myAdView.setNativeAd(adFromGoogle);
+//    }
 }

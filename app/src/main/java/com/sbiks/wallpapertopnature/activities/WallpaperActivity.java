@@ -37,16 +37,16 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.github.chrisbanes.photoview.PhotoView;
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.google.android.gms.ads.rewarded.RewardedAd;
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+//import com.google.android.gms.ads.AdError;
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.AdView;
+//import com.google.android.gms.ads.FullScreenContentCallback;
+//import com.google.android.gms.ads.LoadAdError;
+//import com.google.android.gms.ads.MobileAds;
+//import com.google.android.gms.ads.interstitial.InterstitialAd;
+//import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+//import com.google.android.gms.ads.rewarded.RewardedAd;
+//import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.sbiks.wallpapertopnature.MainApplication;
 import com.sbiks.wallpapertopnature.R;
 import com.sbiks.wallpapertopnature.data_source.DataService;
@@ -77,15 +77,15 @@ public class WallpaperActivity extends AppCompatActivity {
     private LinearLayout bottomNavLayout;
 
     //    ads
-    private InterstitialAd mInterstitialAd;
-    private RewardedAd mRewardedAd;
-    private AdView bannerAdView;
+//    private InterstitialAd mInterstitialAd;
+//    private RewardedAd mRewardedAd;
+//    private AdView bannerAdView;
 
     //    conditions for not showing ads multiple times
-    boolean isInterstitialApplyShown = false;
-    boolean isInterstitialSaveShown = false;
-    boolean isRewardedApplyShown = false;
-    boolean isRewardedSaveShown = false;
+//    boolean isInterstitialApplyShown = false;
+//    boolean isInterstitialSaveShown = false;
+//    boolean isRewardedApplyShown = false;
+//    boolean isRewardedSaveShown = false;
 
     //    dynamic message showing on task complete and ad shown
     private boolean isProcessCompleted = false;
@@ -134,7 +134,7 @@ public class WallpaperActivity extends AppCompatActivity {
         photoView = findViewById(R.id.photo_view);
         progressBar = findViewById(R.id.full_progressbar);
         bottomNavLayout = findViewById(R.id.bottomButtonNav);
-        bannerAdView = findViewById(R.id.adView);
+//        bannerAdView = findViewById(R.id.adView);
         saveButton = bottomNavLayout.getChildAt(0);
         applyButton = bottomNavLayout.getChildAt(1);
         favoriteButton = bottomNavLayout.getChildAt(2);
@@ -148,16 +148,16 @@ public class WallpaperActivity extends AppCompatActivity {
             toolbarLayoutParams.setMargins(0, statusBarHeight, 0, 0);
             toolbar.setLayoutParams(toolbarLayoutParams);
 
-            RelativeLayout.LayoutParams navLayoutLayoutParams = (RelativeLayout.LayoutParams) bannerAdView.getLayoutParams();
-            navLayoutLayoutParams.setMargins(0, 0, 0, navigationBarHeight);
-            bannerAdView.setLayoutParams(navLayoutLayoutParams);
+//            RelativeLayout.LayoutParams navLayoutLayoutParams = (RelativeLayout.LayoutParams) bannerAdView.getLayoutParams();
+//            navLayoutLayoutParams.setMargins(0, 0, 0, navigationBarHeight);
+//            bannerAdView.setLayoutParams(navLayoutLayoutParams);
             return WindowInsetsCompat.CONSUMED;
         });
 
 //        init helpers and ads
         dataService = MainApplication.getDataService(getApplication());
-        initAd();
-        loadInterstitial();
+//        initAd();
+//        loadInterstitial();
 
 //        init views
         setupBottomNav();
@@ -218,60 +218,60 @@ public class WallpaperActivity extends AppCompatActivity {
         });
     }
 
-    private void initAd() {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
+//    private void initAd() {
+//        MobileAds.initialize(this, initializationStatus -> {
+//        });
+//
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        bannerAdView.loadAd(adRequest);
+//    }
 
-        AdRequest adRequest = new AdRequest.Builder().build();
-        bannerAdView.loadAd(adRequest);
-    }
+//    private void showInterstitial(boolean isForSaveImage) {
+//        if (mInterstitialAd != null) {
+//            mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+//                @Override
+//                public void onAdDismissedFullScreenContent() {
+//                    super.onAdDismissedFullScreenContent();
+//                    mInterstitialAd = null;
+//                    processStopIfDone();
+//                    loadInterstitial();
+//                }
+//
+//                @Override
+//                public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+//                    super.onAdFailedToShowFullScreenContent(adError);
+//                    mInterstitialAd = null;
+//                    processStopIfDone();
+//                }
+//
+//                @Override
+//                public void onAdShowedFullScreenContent() {
+//                    super.onAdShowedFullScreenContent();
+//                    if (isForSaveImage) {
+//                        isInterstitialSaveShown = true;
+//                    } else {
+//                        isInterstitialApplyShown = true;
+//                    }
+//                }
+//            });
+//            mInterstitialAd.show(this);
+//        } else {
+//            processStopIfDone();
+//        }
+//    }
 
-    private void showInterstitial(boolean isForSaveImage) {
-        if (mInterstitialAd != null) {
-            mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-                @Override
-                public void onAdDismissedFullScreenContent() {
-                    super.onAdDismissedFullScreenContent();
-                    mInterstitialAd = null;
-                    processStopIfDone();
-                    loadInterstitial();
-                }
-
-                @Override
-                public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                    super.onAdFailedToShowFullScreenContent(adError);
-                    mInterstitialAd = null;
-                    processStopIfDone();
-                }
-
-                @Override
-                public void onAdShowedFullScreenContent() {
-                    super.onAdShowedFullScreenContent();
-                    if (isForSaveImage) {
-                        isInterstitialSaveShown = true;
-                    } else {
-                        isInterstitialApplyShown = true;
-                    }
-                }
-            });
-            mInterstitialAd.show(this);
-        } else {
-            processStopIfDone();
-        }
-    }
-
-    private void loadInterstitial() {
-//        never load interstitial for premium wallpaper
-        if (pojo.isPremium()) return;
-
-        InterstitialAd.load(this, getString(R.string.set_wallpaper_interstitial_id), new AdRequest.Builder().build(), new InterstitialAdLoadCallback() {
-            @Override
-            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                super.onAdLoaded(interstitialAd);
-                mInterstitialAd = interstitialAd;
-            }
-        });
-    }
+//    private void loadInterstitial() {
+////        never load interstitial for premium wallpaper
+//        if (pojo.isPremium()) return;
+//
+//        InterstitialAd.load(this, getString(R.string.set_wallpaper_interstitial_id), new AdRequest.Builder().build(), new InterstitialAdLoadCallback() {
+//            @Override
+//            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+//                super.onAdLoaded(interstitialAd);
+//                mInterstitialAd = interstitialAd;
+//            }
+//        });
+//    }
 
     private void setupBottomNav() {
         final ImageView heartImage = favoriteButton.findViewById(R.id.heartImage);
@@ -287,19 +287,19 @@ public class WallpaperActivity extends AppCompatActivity {
                         new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 return;
             }
-            if (pojo.isPremium() && !isRewardedSaveShown) {
-                showWatchAdDialog(true);
-                return;
-            }
+//            if (pojo.isPremium() && !isRewardedSaveShown) {
+//                showWatchAdDialog(true);
+//                return;
+//            }
             saveImage();
         });
 
 //        apply button click
         applyButton.setOnClickListener(view -> {
-            if (pojo.isPremium() && !isRewardedApplyShown) {
-                showWatchAdDialog(false);
-                return;
-            }
+//            if (pojo.isPremium() && !isRewardedApplyShown) {
+//                showWatchAdDialog(false);
+//                return;
+//            }
             askOrApplyWallpaper();
         });
 //        favorite button click
@@ -344,10 +344,11 @@ public class WallpaperActivity extends AppCompatActivity {
 //        delay of 500ms
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             if (isSaved) {
-                if (isInterstitialSaveShown)
-                    processStopIfDone();
-                else
-                    showInterstitial(true);
+                processStopIfDone();
+//                if (isInterstitialSaveShown)
+//                    processStopIfDone();
+//                else
+//                    showInterstitial(true);
             } else {
                 message = "Error while saving image.";
                 processStopIfDone();
@@ -381,38 +382,39 @@ public class WallpaperActivity extends AppCompatActivity {
 
     @Override
     public void finish() {
-        Log.d(TAG, "finish: called -> " + (mInterstitialAd != null));
-        if (!(getApplication() instanceof MainApplication)) {
-            super.finish();
-        }
-        final MainApplication mainApplication = (MainApplication) getApplication();
-
-        if (mInterstitialAd != null && !isInterstitialApplyShown && !isInterstitialSaveShown && mainApplication.canShowInterstitial()) {
-            mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-                @Override
-                public void onAdDismissedFullScreenContent() {
-                    super.onAdDismissedFullScreenContent();
-                    mInterstitialAd = null;
-                    finish();
-                }
-
-                @Override
-                public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                    super.onAdFailedToShowFullScreenContent(adError);
-                    mInterstitialAd = null;
-                    finish();
-                }
-
-                @Override
-                public void onAdShowedFullScreenContent() {
-                    super.onAdShowedFullScreenContent();
-                    mainApplication.interstitialShown();
-                }
-            });
-            mInterstitialAd.show(this);
-        } else {
-            super.finish();
-        }
+        super.finish();
+//        Log.d(TAG, "finish: called -> " + (mInterstitialAd != null));
+//        if (!(getApplication() instanceof MainApplication)) {
+//            super.finish();
+//        }
+//        final MainApplication mainApplication = (MainApplication) getApplication();
+//
+//        if (mInterstitialAd != null && !isInterstitialApplyShown && !isInterstitialSaveShown && mainApplication.canShowInterstitial()) {
+//            mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+//                @Override
+//                public void onAdDismissedFullScreenContent() {
+//                    super.onAdDismissedFullScreenContent();
+//                    mInterstitialAd = null;
+//                    finish();
+//                }
+//
+//                @Override
+//                public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+//                    super.onAdFailedToShowFullScreenContent(adError);
+//                    mInterstitialAd = null;
+//                    finish();
+//                }
+//
+//                @Override
+//                public void onAdShowedFullScreenContent() {
+//                    super.onAdShowedFullScreenContent();
+//                    mainApplication.interstitialShown();
+//                }
+//            });
+//            mInterstitialAd.show(this);
+//        } else {
+//            super.finish();
+//        }
 //        super.finish();
     }
 
@@ -447,10 +449,11 @@ public class WallpaperActivity extends AppCompatActivity {
             final boolean b = ApplyWallpaper.fromBitmap(this, imageBitmap, where);
             handler.post(() -> {
                 if (b) {
-                    if (isInterstitialApplyShown)
-                        processStopIfDone();
-                    else
-                        showInterstitial(false);
+                    processStopIfDone();
+//                    if (isInterstitialApplyShown)
+//                        processStopIfDone();
+//                    else
+//                        showInterstitial(false);
                 } else {
                     message = "Failed to apply wallpaper";
                     processStopIfDone();
@@ -459,66 +462,66 @@ public class WallpaperActivity extends AppCompatActivity {
         });
     }
 
-    private void showWatchAdDialog(boolean isForSaveImage) {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.download_premium_title)
-                .setPositiveButton(R.string.yes_watch, (dialog1, which) -> loadRewardedAd(isForSaveImage))
-                .setNegativeButton(R.string.no_thanks, null)
-                .create().show();
-    }
+//    private void showWatchAdDialog(boolean isForSaveImage) {
+//        new AlertDialog.Builder(this)
+//                .setTitle(R.string.download_premium_title)
+//                .setPositiveButton(R.string.yes_watch, (dialog1, which) -> loadRewardedAd(isForSaveImage))
+//                .setNegativeButton(R.string.no_thanks, null)
+//                .create().show();
+//    }
 
-    private void loadRewardedAd(boolean isForSaveImage) {
-        progressBar.setVisibility(View.VISIBLE);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        RewardedAd.load(this, getString(R.string.rewarded_ad_id),
-                adRequest, new RewardedAdLoadCallback() {
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(WallpaperActivity.this, "Failed to load Ad.", Toast.LENGTH_SHORT).show();
-                        mRewardedAd = null;
-                    }
+//    private void loadRewardedAd(boolean isForSaveImage) {
+//        progressBar.setVisibility(View.VISIBLE);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        RewardedAd.load(this, getString(R.string.rewarded_ad_id),
+//                adRequest, new RewardedAdLoadCallback() {
+//                    @Override
+//                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+//                        progressBar.setVisibility(View.GONE);
+//                        Toast.makeText(WallpaperActivity.this, "Failed to load Ad.", Toast.LENGTH_SHORT).show();
+//                        mRewardedAd = null;
+//                    }
+//
+//                    @Override
+//                    public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
+//                        progressBar.setVisibility(View.GONE);
+//                        mRewardedAd = rewardedAd;
+//                        showRewardedAd(isForSaveImage);
+//                    }
+//                });
+//    }
 
-                    @Override
-                    public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
-                        progressBar.setVisibility(View.GONE);
-                        mRewardedAd = rewardedAd;
-                        showRewardedAd(isForSaveImage);
-                    }
-                });
-    }
-
-    private void showRewardedAd(boolean isForSaveImage) {
-        if (mRewardedAd != null) {
-            mRewardedAd.show(this, rewardItem -> {
-                if (isForSaveImage) {
-                    isRewardedSaveShown = true;
-                    saveImage();
-                } else {
-                    isRewardedApplyShown = true;
-                    askOrApplyWallpaper();
-                }
-            });
-        } else {
-            Log.d(TAG, "The rewarded ad wasn't ready yet.");
-        }
-    }
+//    private void showRewardedAd(boolean isForSaveImage) {
+//        if (mRewardedAd != null) {
+//            mRewardedAd.show(this, rewardItem -> {
+//                if (isForSaveImage) {
+//                    isRewardedSaveShown = true;
+//                    saveImage();
+//                } else {
+//                    isRewardedApplyShown = true;
+//                    askOrApplyWallpaper();
+//                }
+//            });
+//        } else {
+//            Log.d(TAG, "The rewarded ad wasn't ready yet.");
+//        }
+//    }
 
     @Override
     protected void onPause() {
-        bannerAdView.pause();
+//        bannerAdView.pause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        bannerAdView.resume();
+//        bannerAdView.resume();
     }
 
     @Override
     protected void onDestroy() {
-        bannerAdView.destroy();
+//        bannerAdView.destroy();
         Intent i = new Intent();
         i.putExtra("id", pojo.getViewType());
         i.putExtra("fav", dataService.isFavorite(pojo.getUrl()));

@@ -12,12 +12,12 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
-import com.google.android.gms.ads.MobileAds;
+//import com.google.android.gms.ads.MobileAds;
 import com.sbiks.wallpapertopnature.activities.SplashActivity;
 import com.sbiks.wallpapertopnature.data_source.DataService;
 import com.sbiks.wallpapertopnature.data_source.SQLCategories;
 import com.sbiks.wallpapertopnature.data_source.impl.SQLDataServiceImpl;
-import com.sbiks.wallpapertopnature.utils.AppOpenAdManager;
+//import com.sbiks.wallpapertopnature.utils.AppOpenAdManager;
 import com.sbiks.wallpapertopnature.utils.SQLFav;
 import com.sbiks.wallpapertopnature.utils.Utils;
 
@@ -25,7 +25,7 @@ import com.sbiks.wallpapertopnature.utils.Utils;
 public class MainApplication extends android.app.Application
         implements ActivityLifecycleCallbacks, DefaultLifecycleObserver {
 
-    private AppOpenAdManager appOpenAdManager;
+//    private AppOpenAdManager appOpenAdManager;
     private Activity currentActivity;
 
     private static final String TAG = "MyApplication";
@@ -38,16 +38,16 @@ public class MainApplication extends android.app.Application
         return ((MainApplication) application).dataService;
     }
 
-    public void interstitialShown() {
-        Log.d(TAG, "interstitialShown: called");
-        cardClicks = 0;
-    }
+//    public void interstitialShown() {
+//        Log.d(TAG, "interstitialShown: called");
+//        cardClicks = 0;
+//    }
 
-    public boolean canShowInterstitial() {
-        cardClicks++;
-        Log.d(TAG, "canShowInterstitial: " + cardClicks);
-        return cardClicks >= interstitialAfterClicks;
-    }
+//    public boolean canShowInterstitial() {
+//        cardClicks++;
+//        Log.d(TAG, "canShowInterstitial: " + cardClicks);
+//        return cardClicks >= interstitialAfterClicks;
+//    }
 
     @Override
     public void onCreate() {
@@ -62,52 +62,52 @@ public class MainApplication extends android.app.Application
         SQLFav sqlFav = new SQLFav(this);
         dataService = new SQLDataServiceImpl(this, sqlCategories, sqlFav);
 
-        MobileAds.initialize(this, initializationStatus -> {
-        });
+//        MobileAds.initialize(this, initializationStatus -> {
+//        });
 
         ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
-        appOpenAdManager = new AppOpenAdManager(getString(R.string.open_app_ad_id), new AppOpenAdManager.OnAddLoadCallback() {
-            @Override
-            public void onAdLoaded() {
-                tryShowSplashAd();
-            }
-
-            @Override
-            public void onAdLoadFailed() {
-
-            }
-
-            @Override
-            public void onAdShown() {
-                if (currentActivity instanceof SplashActivity) {
-                    ((SplashActivity) currentActivity).notifyAdShown();
-                }
-            }
-
-            @Override
-            public void onAdShowError() {
-
-            }
-
-            @Override
-            public void onAdComplete() {
-                if (currentActivity instanceof SplashActivity) {
-                    ((SplashActivity) currentActivity).notifyAdComplete();
-                }
-            }
-        });
+//        appOpenAdManager = new AppOpenAdManager(getString(R.string.open_app_ad_id), new AppOpenAdManager.OnAddLoadCallback() {
+//            @Override
+//            public void onAdLoaded() {
+//                tryShowSplashAd();
+//            }
+//
+//            @Override
+//            public void onAdLoadFailed() {
+//
+//            }
+//
+//            @Override
+//            public void onAdShown() {
+//                if (currentActivity instanceof SplashActivity) {
+//                    ((SplashActivity) currentActivity).notifyAdShown();
+//                }
+//            }
+//
+//            @Override
+//            public void onAdShowError() {
+//
+//            }
+//
+//            @Override
+//            public void onAdComplete() {
+//                if (currentActivity instanceof SplashActivity) {
+//                    ((SplashActivity) currentActivity).notifyAdComplete();
+//                }
+//            }
+//        });
     }
 
     @Override
     public void onStart(@NonNull LifecycleOwner owner) {
-        appOpenAdManager.showAdIfAvailable(currentActivity);
+//        appOpenAdManager.showAdIfAvailable(currentActivity);
 
     }
 
     private void tryShowSplashAd() {
-        if (currentActivity instanceof SplashActivity) {
-            appOpenAdManager.showAdIfAvailable(currentActivity);
-        }
+//        if (currentActivity instanceof SplashActivity) {
+//            appOpenAdManager.showAdIfAvailable(currentActivity);
+//        }
     }
 
     /**
@@ -115,9 +115,9 @@ public class MainApplication extends android.app.Application
      */
     @Override
     public void onActivityStarted(@NonNull Activity activity) {
-        if (!appOpenAdManager.isShowingAd) {
+//        if (!appOpenAdManager.isShowingAd) {
             currentActivity = activity;
-        }
+//        }
     }
 
     @Override
