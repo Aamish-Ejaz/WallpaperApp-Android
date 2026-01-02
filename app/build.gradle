@@ -10,15 +10,14 @@ try {
 }
 
 android {
-    compileSdk 33
-    buildToolsVersion "30.0.3"
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.shubhamgupta16.simplewallpaper"
-        targetSdk 33
-        minSdk 21
-        versionCode 6
-        versionName "2.4"
+        targetSdk 36
+        minSdk 23
+        versionCode 1
+        versionName "1.0"
 
         resValue("string", "app_name", secretProperties['APP_NAME'])
         resValue("string", "privicy_policy", secretProperties['PRIVACY_POLICY_URL'])
@@ -52,7 +51,7 @@ android {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.gms:play-services-ads:21.4.0'
+    implementation 'com.google.android.gms:play-services-ads:24.9.0'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.preference:preference:1.2.0'
 

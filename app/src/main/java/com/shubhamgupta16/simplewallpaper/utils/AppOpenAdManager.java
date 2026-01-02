@@ -55,7 +55,6 @@ public class AppOpenAdManager {
                 context,
                 adUnitId,
                 request,
-                AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT,
                 new AppOpenAd.AppOpenAdLoadCallback() {
                     /**
                      * Called when an app open ad has loaded.
